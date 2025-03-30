@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>我来直聘</title>
+  <style>
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: 'Microsoft YaHei', sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #333;
+    }
+    
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .header img {
+      width: 36px;
+      height: 36px;
+      margin-right: 12px;
+      border-radius: 8px;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+      color: #333;
+      font-weight: 600;
+    }
+    
+    .content {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .content p {
+      margin: 0 0 10px;
+      line-height: 1.5;
+      font-size: 14px;
+      color: #555;
+    }
+    
+    .settings-section {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border: 1px solid #eee;
+    }
+    
+    .settings-section label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #444;
+      font-weight: 500;
+    }
+    
+    .settings-section input {
+      width: 100px;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    
+    .settings-section input:focus {
+      outline: none;
+      border-color: #ff6b81;
+      box-shadow: 0 0 0 2px rgba(255,107,129,0.1);
+    }
+    
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      width: 100%;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #startBtn {
+      background: #ff6b81;
+      color: white;
+    }
+    
+    #startBtn:hover {
+      background: #ff4757;
+    }
+    
+    #resetBtn {
+      background: #ff4d4f;
+      color: white;
+    }
+    
+    #resetBtn:hover {
+      background: #ff2d2f;
+    }
+    
+    #saveSettings {
+      background: #4CAF50;
+      color: white;
+      padding: 8px 16px;
+      margin-left: 10px;
+    }
+    
+    #saveSettings:hover {
+      background: #43A047;
+    }
+    
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+    
+    .progress {
+      margin: 20px 0;
+      display: none;
+    }
+    
+    .progress.active {
+      display: block;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    
+    .progress-bar-inner {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ff6b81, #ff4757);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+    
+    .progress-text {
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    .donate-section {
+      margin-top: 25px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+    
+    .donate-title {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #333;
+    }
+    
+    .donate-description {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .qr-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      padding: 0 10px;
+    }
+    
+    .qr-item {
+      text-align: center;
+    }
+    
+    .qr-item img {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    
+    .qr-item p {
+      margin: 0;
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+    }
+    
+    .license-section {
+      margin-top: 25px;
+      padding: 15px;
+      border-top: 1px solid #eee;
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icons/icon48.png" alt="Logo">
+    <h1>我来直聘</h1>
+  </div>
+  
+  <div class="content">
+    <p>欢迎使用我来直聘插件！本插件可以帮助您在BOSS直聘上自动打招呼，提高求职效率。</p>
+    <p>使用前请确保：</p>
+    <ul>
+      <li>已登录BOSS直聘网页版</li>
+      <li>打开了职位列表页面</li>
+      <li>合理设置打招呼次数</li>
+    </ul>
+  </div>
+  
+  <div class="settings-section">
+    <label>
+      设置打招呼次数（1-500）：
+      <input type="number" id="maxGreets" min="1" max="500" value="100">
+      <button id="saveSettings">保存</button>
+    </label>
+    <p>当前设置：最多打招呼 <span id="maxGreetsDisplay">100</span> 次</p>
+  </div>
+  
+  <div class="button-group">
+    <button id="startBtn" data-action="start">开始自动打招呼</button>
+    <button id="resetBtn">重置进度</button>
+  </div>
+  
+  <div class="progress">
+    <div class="progress-bar">
+      <div class="progress-bar-inner"></div>
+    </div>
+    <div class="progress-text">
+      已完成：<span id="progressCount">0</span> 次
+    </div>
+  </div>
+  
+  <div class="donate-section">
+    <div class="donate-title">支持作者</div>
+    <div class="donate-description">
+      如果您觉得这个插件对您有帮助，可以请作者喝杯咖啡 ☕
+    </div>
+    <div class="qr-container">
+      <div class="qr-item">
+        <img src="images/wechat.jpg" alt="微信赞赏码">
+        <p>微信赞赏</p>
+      </div>
+      <div class="qr-item">
+        <img src="images/alipay.jpg" alt="支付宝收款码">
+        <p>支付宝</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="license-section">
+    <div style="font-weight: 600; margin-bottom: 10px; color: #333;">📄 使用许可</div>
+    <div style="line-height: 1.6;">
+      本插件仅限个人使用，允许：
+      <ul style="margin: 5px 0; padding-left: 20px;">
+        <li>个人使用本插件</li>
+        <li>分享原始未修改版本</li>
+        <li>修改代码供个人使用</li>
+      </ul>
+      严禁：
+      <ul style="margin: 5px 0; padding-left: 20px;">
+        <li>分享修改后的版本</li>
+        <li>商业使用或转卖</li>
+        <li>对插件进行破解</li>
+      </ul>
+      违反许可条款将承担法律责任。
+    </div>
+  </div>
+  
+  <div class="footer">
+    <div>版本: 1.0.1</div>
+    <div style="font-size: 12px; color: #666; margin-top: 5px;">© 2025 叶俊宇 (ye1026789747@Gmail.com)</div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
